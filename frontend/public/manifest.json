@@ -1,0 +1,27 @@
+{
+  "short_name": "CareerCopilot",
+  "name": "AI Career Copilot & Resume Analyzer",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/dashboard",
+  "background_color": "#030712",
+  "theme_color": "#8b5cf6",
+  "display": "standalone",
+  "orientation": "portrait",
+  "description": "Progressive Web App Career platform powered by AI to optimize resumes for ATS and practice mock interview evaluations."
+}

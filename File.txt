@@ -1,0 +1,446 @@
+Use the following prompt with ChatGPT, Claude, Gemini, Cursor, Windsurf, or any AI coding assistant to generate the complete project.
+
+---
+
+# AI-Powered Resume Analyzer Project Prompt
+
+Act as a Senior Full-Stack Developer, AI Engineer, and UI/UX Designer.
+
+Build a complete production-ready web application called **"AI-Powered Resume Analyzer"**.
+
+## Project Objective
+
+The system should help users analyze their resumes using AI, check ATS compatibility, compare resumes with job descriptions, identify missing skills, generate interview questions, and provide improvement suggestions.
+
+The project should be suitable for a final-year college minor project and demonstrate AI, NLP, full-stack development, and modern UI design.
+
+---
+
+## Technology Stack
+
+Frontend:
+
+* React.js
+* Tailwind CSS
+* Axios
+* React Router
+
+Backend:
+
+* Node.js
+* Express.js
+
+Database:
+
+* MongoDB
+
+AI/NLP:
+
+* Python Microservice (Flask or FastAPI)
+* spaCy
+* Sentence Transformers
+* OpenAI API (optional)
+
+Resume Parsing:
+
+* pdfplumber
+* PyPDF2
+* python-docx
+
+Charts:
+
+* Recharts
+
+Authentication:
+
+* JWT Authentication
+
+---
+
+# Main Features
+
+## 1. User Authentication
+
+Implement:
+
+* Registration
+* Login
+* Forgot Password
+* JWT Authentication
+* Protected Routes
+
+Database fields:
+
+* Name
+* Email
+* Password
+* Created Date
+
+---
+
+## 2. Resume Upload
+
+Allow users to upload:
+
+* PDF
+* DOCX
+
+Store:
+
+* Resume file
+* Parsed text
+* Upload date
+
+Extract text automatically after upload.
+
+---
+
+## 3. Resume Parsing
+
+Extract:
+
+### Personal Information
+
+* Name
+* Email
+* Phone Number
+
+### Education
+
+* Degree
+* College
+* Graduation Year
+
+### Skills
+
+### Projects
+
+### Certifications
+
+### Experience
+
+Display extracted information in structured format.
+
+---
+
+## 4. ATS Score Calculator
+
+Generate ATS score out of 100.
+
+Scoring Criteria:
+
+* Contact Information
+* Skills
+* Education
+* Experience
+* Projects
+* Certifications
+* Formatting
+
+Display:
+
+* Overall Score
+* Section Wise Scores
+
+Use charts and progress bars.
+
+---
+
+## 5. Job Description Matching
+
+User can paste a Job Description.
+
+Perform:
+
+* Keyword Extraction
+* Semantic Similarity
+* Skill Matching
+
+Display:
+
+Match Percentage
+
+Example:
+
+Resume Match Score: 82%
+
+Matched Skills:
+
+* Java
+* React
+* MongoDB
+
+Missing Skills:
+
+* Docker
+* AWS
+* Kubernetes
+
+---
+
+## 6. Skill Gap Analysis
+
+Based on selected role:
+
+Roles:
+
+* Frontend Developer
+* Backend Developer
+* Full Stack Developer
+* Data Analyst
+* AI Engineer
+
+Show:
+
+Current Skills
+
+Missing Skills
+
+Recommended Learning Path
+
+---
+
+## 7. AI Resume Suggestions
+
+Analyze resume and generate:
+
+* Weak Areas
+* Missing Sections
+* Grammar Issues
+* Formatting Problems
+
+Provide actionable suggestions.
+
+Example:
+
+❌ Worked on website
+
+✅ Developed responsive web application using React.js and Node.js
+
+---
+
+## 8. AI Resume Summary Generator
+
+Generate professional summary automatically.
+
+Example:
+
+"Computer Science student skilled in Java, React.js, Node.js, and Machine Learning with experience developing scalable web applications and AI-powered solutions."
+
+---
+
+## 9. Interview Question Generator
+
+Generate questions from:
+
+* Skills
+* Projects
+* Experience
+
+Example:
+
+Project:
+AI Hostel Complaint Management System
+
+Questions:
+
+* Explain project architecture.
+* Why did you choose MongoDB?
+* How did you handle authentication?
+
+Generate:
+
+* HR Questions
+* Technical Questions
+* Project Questions
+
+---
+
+## 10. Career Role Prediction
+
+Predict suitable career roles based on resume.
+
+Example:
+
+Recommended Roles:
+
+* Frontend Developer
+* Full Stack Developer
+* Software Engineer
+
+Display confidence percentages.
+
+---
+
+## 11. Certification Recommendation
+
+Recommend certifications based on missing skills.
+
+Example:
+
+Missing Skill:
+AWS
+
+Recommendation:
+AWS Cloud Practitioner
+
+Missing Skill:
+React
+
+Recommendation:
+Meta Front-End Developer Certificate
+
+---
+
+## 12. Cover Letter Generator
+
+Generate cover letter using:
+
+* Resume Data
+* Job Description
+
+Allow download as PDF.
+
+---
+
+## 13. Analytics Dashboard
+
+Create modern dashboard showing:
+
+* ATS Score
+* Match Score
+* Skill Strength
+* Resume Completeness
+* Career Prediction
+
+Use charts and graphs.
+
+---
+
+## 14. Resume History
+
+Store all analyzed resumes.
+
+User can:
+
+* View History
+* Compare Previous Scores
+* Track Improvements
+
+---
+
+# Admin Panel
+
+Create Admin Dashboard with:
+
+* Total Users
+* Total Resumes
+* Average ATS Score
+* Most Common Skills
+* Most Uploaded Roles
+
+---
+
+# UI Requirements
+
+Create modern professional UI.
+
+Pages:
+
+1. Landing Page
+2. Login
+3. Register
+4. Dashboard
+5. Resume Upload
+6. Resume Analysis
+7. ATS Report
+8. Job Match Analysis
+9. Interview Preparation
+10. Career Recommendation
+11. Profile Page
+12. Admin Dashboard
+
+Use:
+
+* Responsive Design
+* Dark Mode
+* Animations
+* Professional Color Palette
+
+---
+
+# Folder Structure
+
+Generate complete folder structure.
+
+Include:
+
+Frontend
+Backend
+Python AI Service
+
+Provide all files.
+
+---
+
+# Database Design
+
+Generate:
+
+* MongoDB Collections
+* Schemas
+* Relationships
+
+---
+
+# API Development
+
+Generate:
+
+* REST APIs
+* Request Examples
+* Response Examples
+
+---
+
+# Deployment
+
+Provide deployment instructions for:
+
+Frontend:
+
+* Vercel
+
+Backend:
+
+* Render
+
+Database:
+
+* MongoDB Atlas
+
+AI Service:
+
+* Render
+
+---
+
+# Documentation
+
+Generate:
+
+1. Project Abstract
+2. Problem Statement
+3. Objectives
+4. System Architecture
+5. Modules
+6. Data Flow Diagram
+7. Use Case Diagram
+8. Sequence Diagram
+9. ER Diagram
+10. Testing Strategy
+11. Future Scope
+
+---
+
+Generate complete source code module by module with detailed explanations, comments, database schemas, API routes, UI components, deployment steps, and project documentation suitable for a college minor project evaluation.

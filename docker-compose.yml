@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: resume_analyzer_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - resume-network
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: resume_analyzer_ai
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    networks:
+      - resume-network
+    depends_on:
+      - mongodb
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: resume_analyzer_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/resume_analyzer
+      - JWT_SECRET=${JWT_SECRET:-supersecretkey123}
+      - AI_SERVICE_URL=http://ai-service:8000
+      - NODE_ENV=development
+    networks:
+      - resume-network
+    depends_on:
+      - mongodb
+      - ai-service
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: resume_analyzer_frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000/api
+    networks:
+      - resume-network
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
+
+networks:
+  resume-network:
+    driver: bridge

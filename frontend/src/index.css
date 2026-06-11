@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 79 70 229; /* Indigo-600 */
+  --color-primary-hover: 67 56 202; /* Indigo-700 */
+  --color-success: 16 185 129; /* Emerald-500 */
+  --color-success-hover: 5 150 105;
+  --color-warning: 245 158 11; /* Amber-500 */
+  --color-warning-hover: 217 119 6;
+  --color-danger: 239 68 68; /* Red-500 */
+  --color-danger-hover: 220 38 38;
+  --color-info: 59 130 246; /* Blue-500 */
+  --color-info-hover: 37 99 235;
+
+  --bg-app: 255 255 255; /* White background */
+  --bg-card: 255 255 255; /* White card */
+  --bg-card-hover: 248 250 252; /* slate-50 */
+  --color-border: 229 231 235; /* gray-200 */
+  --text-main: 17 24 39; /* gray-900 */
+  --text-muted: 100 116 139; /* slate-500 */
+}
+
+/* Dark mode slate-900/slate-800 */
+.dark {
+  --color-primary: 79 70 229; /* Indigo-600 */
+  --color-primary-hover: 67 56 202;
+  --color-success: 16 185 129;
+  --color-success-hover: 5 150 105;
+  --color-warning: 245 158 11;
+  --color-warning-hover: 217 119 6;
+  --color-danger: 239 68 68;
+  --color-danger-hover: 220 38 38;
+  --color-info: 59 130 246;
+  --color-info-hover: 37 99 235;
+
+  --bg-app: 15 23 42; /* slate-900 background */
+  --bg-card: 30 41 59; /* slate-800 card */
+  --bg-card-hover: 51 65 85; /* slate-700 */
+  --color-border: 51 65 85; /* slate-700 */
+  --text-main: 248 250 252; /* slate-50 */
+  --text-muted: 148 163 184; /* slate-400 */
+}
+
+@layer base {
+  body {
+    background-color: rgb(var(--bg-app));
+    color: rgb(var(--text-main));
+    font-family: 'Inter', sans-serif;
+    @apply transition-colors duration-200;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+/* Reusable flat panel card style (no glassmorphism) */
+.glass {
+  background-color: rgb(var(--bg-card));
+  border: 1px solid rgb(var(--color-border));
+}
+
+.dark .glass {
+  background-color: rgb(var(--bg-card));
+  border: 1px solid rgb(var(--color-border));
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600;
+}
+
+/* Pulse animation for skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.03) 25%, 
+    rgba(255,255,255,0.08) 50%, 
+    rgba(255,255,255,0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Ripple micro-animation for buttons */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating Copilot Wave Animation */
+@keyframes wavePulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.wave-bar {
+  animation: wavePulse 1.2s ease-in-out infinite;
+}
