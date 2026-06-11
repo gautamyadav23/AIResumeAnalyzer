@@ -1,8 +1,14 @@
 import axios from 'axios';
 
+// Auto-append '/api' to VITE_API_URL if it is missing
+let baseUrl = import.meta.env.VITE_API_URL || '/api';
+if (baseUrl.startsWith('http') && !baseUrl.includes('/api')) {
+  baseUrl = baseUrl.replace(/\/$/, '') + '/api';
+}
+
 // Base API instance
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: baseUrl,
   timeout: 30000, // 30s timeout (especially for heavy FastAPI integrations)
 });
 
