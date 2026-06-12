@@ -23,7 +23,7 @@ def generate_gemini_response(prompt: str, json_format: bool = False, temperature
     if not client:
         return None
     try:
-        model = client.GenerativeModel('gemini-flash-lite-latest')
+        model = client.GenerativeModel('gemini-flash-latest')
         if json_format:
             # Request JSON output structure
             config = {

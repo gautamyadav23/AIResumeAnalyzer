@@ -222,7 +222,7 @@ def generate_questions(skills: List[str], projects: List[str], experience: List[
     Target Company: {company}
     Randomization Seed: {uuid.uuid4().hex}
     
-    Generate unique interview questions. Please vary the questions generated to cover different aspects of the technology stack and avoid repeating previously standard questions.
+    Generate unique interview questions. Please vary the questions generated to cover different aspects of the technology stack and avoid repeating previously standard, introductory, or cliché definition questions (such as how Spring Boot auto-configuration works, how the Node.js event loop works, what is the Virtual DOM, etc.). Instead, pick specific advanced scenarios, edge cases, performance trade-offs, or integration challenges related to the candidate's skills.
     1. Generate 4 Technical questions. Make them aligned to target company requirements (e.g. Google -> DSA, System Design; Amazon -> Scalability, Leadership; TCS -> Fundamentals, Aptitude).
     2. Generate questions for each of the projects in the resume. Return a list of project items, each with 2 categories, and 1 question per category.
     3. Generate 3 HR/Situational questions.
