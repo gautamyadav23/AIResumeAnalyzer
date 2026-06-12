@@ -4,21 +4,14 @@ pydantic==2.7.4
 python-dotenv==1.0.1
 python-multipart==0.0.9
 
-# Natural Language Processing
-spacy==3.7.5
-sentence-transformers==3.0.0
-
 # Document Extractors
 pdfplumber==0.11.1
 PyPDF2==3.0.1
 python-docx==1.1.2
 
-# Data Analysis
-numpy==1.26.4
-pandas==2.2.2
-
 # Google AI & Database
 google-generativeai==0.7.2
 pymongo==4.7.3
 motor==3.4.0
+
 

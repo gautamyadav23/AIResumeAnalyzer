@@ -1,18 +1,24 @@
 import io
 import re
-import spacy
+try:
+    import spacy
+except ImportError:
+    spacy = None
 import pdfplumber
 import docx
 from typing import Dict, List, Any
 
 # Load spaCy English model for NLP checks
-try:
-    print("[Parser Log] Loading spaCy model 'en_core_web_sm'...")
-    nlp = spacy.load("en_core_web_sm")
-    print("[Parser Log] spaCy model loaded successfully.")
-except OSError:
-    print("[Parser Log] Warning: 'en_core_web_sm' not found. Falling back to simple heuristics.")
-    nlp = None
+nlp = None
+if spacy is not None:
+    try:
+        print("[Parser Log] Loading spaCy model 'en_core_web_sm'...")
+        nlp = spacy.load("en_core_web_sm")
+        print("[Parser Log] spaCy model loaded successfully.")
+    except OSError:
+        print("[Parser Log] Warning: 'en_core_web_sm' not found. Falling back to simple heuristics.")
+        nlp = None
+
 
 # Comprehensive database of developer skills categorized by domain
 TECH_SKILLS_KEYWORDS = [
