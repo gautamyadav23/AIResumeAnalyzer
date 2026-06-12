@@ -699,6 +699,7 @@ def generate_resume_insights(name: str, resume_text: str, skills: List[str], exp
     }
 
 def chat_resume(resume_text: str, history: List[Dict[str, str]], message: str, ats_score: int, skills: List[str], experience: List[str], projects: List[str]) -> str:
+    import os
     # Build conversation block
     history_str = ""
     for h in history:
@@ -723,7 +724,11 @@ def chat_resume(resume_text: str, history: List[Dict[str, str]], message: str, a
     res_text = generate_gemini_response(prompt)
     if res_text:
         return res_text.strip()
-    return "I am currently offline. Please set your GEMINI_API_KEY environment variable or try again later."
+        
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key or not api_key.strip():
+        return "I am currently offline. Please set your GEMINI_API_KEY environment variable or try again later."
+    return "I am currently offline. The Gemini API rate limit or daily quota has been exceeded (429 Too Many Requests). Please try again later or check your API key status."
 
 def analyze_job_description(resume_text: str, job_description: str, skills: List[str]) -> Dict[str, Any]:
     print(f"[Generators] Starting analyze_job_description. Input skills count: {len(skills)}")
