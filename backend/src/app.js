@@ -8,6 +8,8 @@ const resumeRoutes = require('./routes/resumeRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const interviewRoutes = require('./routes/interviewRoutes');
 
+const dbMiddleware = require('./middleware/dbMiddleware');
+
 const app = express();
 
 // Set security HTTP headers
@@ -27,6 +29,9 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Serving static files (if any, like uploads placeholder)
 app.use('/uploads', express.static('uploads'));
+
+// Apply DB connection middleware before routing requests
+app.use(dbMiddleware);
 
 // API Routes
 app.use('/api/auth', authRoutes);
