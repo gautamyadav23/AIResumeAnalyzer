@@ -74,6 +74,9 @@ exports.getAdminStats = async (req, res) => {
       date: activity.uploadDate
     }));
 
+    // 7) Retrieve all users
+    const users = await User.find().select('-password').sort('-createdAt');
+
     res.status(200).json({
       status: 'success',
       data: {
@@ -85,13 +88,76 @@ exports.getAdminStats = async (req, res) => {
         popularSkills,
         topCareers,
         uploadsTimeline,
-        recentActivity: formattedActivity
+        recentActivity: formattedActivity,
+        users
       }
     });
   } catch (err) {
     res.status(500).json({
       status: 'error',
       message: 'Failed to aggregate admin statistics.',
+      error: err.message
+    });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const userIdToDelete = req.params.id;
+
+    // Prevent admin from deleting themselves
+    if (req.user._id.toString() === userIdToDelete) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'You cannot delete yourself.'
+      });
+    }
+
+    const user = await User.findById(userIdToDelete);
+    if (!user) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'User not found.'
+      });
+    }
+
+    const mongoose = require('mongoose');
+
+    // Cascade delete user's data across collections
+    await Resume.deleteMany({ userId: userIdToDelete });
+    
+    // Safely delete from other models if registered
+    const models = [
+      'ResumeChats',
+      'ResumeInsights',
+      'JobAnalysis',
+      'InterviewQuestions',
+      'InterviewHistory',
+      'CareerRecommendations',
+      'LearningRoadmaps'
+    ];
+
+    for (const modelName of models) {
+      try {
+        if (mongoose.models[modelName]) {
+          await mongoose.model(modelName).deleteMany({ userId: userIdToDelete });
+        }
+      } catch (err) {
+        console.error(`Failed to cascade delete for model ${modelName}:`, err.message);
+      }
+    }
+
+    // Delete the user
+    await User.findByIdAndDelete(userIdToDelete);
+
+    res.status(200).json({
+      status: 'success',
+      message: 'User and all associated data successfully deleted.'
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 'error',
+      message: 'Failed to delete user.',
       error: err.message
     });
   }

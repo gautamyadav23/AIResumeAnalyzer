@@ -9,5 +9,6 @@ router.use(authMiddleware.protect);
 router.use(authMiddleware.restrictTo('admin'));
 
 router.get('/stats', adminController.getAdminStats);
+router.delete('/users/:id', adminController.deleteUser);
 
 module.exports = router;
