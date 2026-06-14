@@ -9,7 +9,7 @@ if (baseUrl.startsWith('http') && !baseUrl.includes('/api')) {
 // Base API instance
 const API = axios.create({
   baseURL: baseUrl,
-  timeout: 30000, // 30s timeout (especially for heavy FastAPI integrations)
+  timeout: 90000, // 90s timeout (especially for heavy FastAPI integrations and cold starts)
 });
 
 // Request Interceptor: Automatically inject JWT Token
